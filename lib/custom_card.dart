@@ -24,7 +24,7 @@ class CustomCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                article.title!,
+                "${article.title}",
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -44,7 +44,7 @@ class CustomCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child:
-                  Text(article.description ?? "ERRO: Descrição não encontrada"),
+                  Text("${article.description}"),
             ),
           ],
         )),
