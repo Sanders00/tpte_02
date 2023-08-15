@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tpte_02/custom_card.dart';
+import 'package:tpte_02/custom_widgets/custom_card.dart';
 import 'package:tpte_02/services/news_api.dart';
 
 class HomePage extends StatefulWidget {

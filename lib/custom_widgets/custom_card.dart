@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tpte_02/model/article_model.dart';
-import 'package:tpte_02/detail_page.dart';
+import 'package:tpte_02/pages/detail_page.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.article});
