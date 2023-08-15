@@ -15,23 +15,33 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(
         title: Text(widget.article.title!),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-                height: 200,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(widget.article.urlToImage!),
-                      fit: BoxFit.cover),
-                )),
-            Padding(
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Container(
+              height: 200,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(widget.article.urlToImage!),
+                    fit: BoxFit.cover),
+              )),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(widget.article.content!),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(widget.article.content!),
-            )
-          ],
-        ),
+              child: Text(
+                '-By: ${widget.article.author}',
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
