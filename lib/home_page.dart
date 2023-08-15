@@ -12,8 +12,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   NewsAPI api = NewsAPI();
 
-
-
+  @override
+  void initState() {
+    api.getArticle();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +27,21 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future: api.getArticle(),
         builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          final articles = snapshot.data!;
-          return ListView.builder(
-            itemCount: articles.length,
-            itemBuilder: (context, index) {
-              return CustomCard(article: articles[index]);
-            },
+          if (snapshot.hasData) {
+            final articles = snapshot.data!;
+            return ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: articles.length,
+              itemBuilder: (context, index) {
+                return CustomCard(article: articles[index]);
+              },
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
           );
-        }
-        return const Center(child: CircularProgressIndicator(),);
-      },),
+        },
+      ),
     );
   }
 }

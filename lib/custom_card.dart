@@ -15,27 +15,39 @@ class CustomCard extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailPage(),
+                builder: (context) => DetailPage(article: article),
               ));
         },
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.3,
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: Center(
-              child: Column(
-            children: [
-              Text(article.title),
-              Container(
+        child: Center(
+            child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                article.title!,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
                 height: 200,
-                width: 200,
-                  decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(article.urlToImage), fit: BoxFit.cover),
-              )),
-              Text(article.description),
-            ],
-          )),
-        ),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: article.urlToImage != null
+                      ? DecorationImage(
+                          image: NetworkImage(article.urlToImage!),
+                          fit: BoxFit.cover)
+                      : const DecorationImage(
+                          image: AssetImage(
+                              'assets/icon-image-not-found-free-vector.jpg')),
+                )),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  Text(article.description ?? "ERRO: Descrição não encontrada"),
+            ),
+          ],
+        )),
       ),
     );
   }
